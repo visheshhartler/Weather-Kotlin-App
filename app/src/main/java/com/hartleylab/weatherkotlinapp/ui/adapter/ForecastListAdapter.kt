@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
 import org.jetbrains.anko.find
 
-class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: OnItemClickListener) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (ModelForecast) -> Unit) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.ctx).inflate(R.layout.item_forecast, parent, false)
@@ -27,7 +27,7 @@ class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: OnItemC
         holder.bindForecast(weekForecast[position])
     }
 
-    class ViewHolder(view: View, val itemClick: OnItemClickListener): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (ModelForecast) -> Unit): RecyclerView.ViewHolder(view) {
         private val iconView = view.find<ImageView>(R.id.icon)
         private val dateText = view.find<TextView>(R.id.date)
         private val descriptionText = view.find<TextView>(R.id.description)
@@ -46,9 +46,4 @@ class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: OnItemC
         }
 
     }
-
-    interface OnItemClickListener {
-        operator fun invoke(forecast: ModelForecast)
-    }
-
 }

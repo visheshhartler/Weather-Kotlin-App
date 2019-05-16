@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener{
-                    override fun invoke(forecast: ModelForecast) {
-                        toast(forecast.date)
-                    }
-                })
+                forecastList.adapter = ForecastListAdapter(result) { modelForecast ->
+                    toast(modelForecast.description)
+                }
             }
         }
     }
