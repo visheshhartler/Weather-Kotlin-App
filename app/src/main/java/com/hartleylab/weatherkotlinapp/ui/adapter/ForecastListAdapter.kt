@@ -28,19 +28,14 @@ class ForecastListAdapter(val weekForecast: ForecastList, val itemClick: (ModelF
     }
 
     class ViewHolder(view: View, val itemClick: (ModelForecast) -> Unit): RecyclerView.ViewHolder(view) {
-        private val iconView = view.find<ImageView>(R.id.icon)
-        private val dateText = view.find<TextView>(R.id.date)
-        private val descriptionText = view.find<TextView>(R.id.description)
-        private val maxTempView = view.find<TextView>(R.id.maxTemperature)
-        private val minTempView = view.find<TextView>(R.id.minTemperature)
 
         fun bindForecast(forecast: ModelForecast) {
             with(forecast) {
-                Picasso.get().load(iconUrl).into(iconView)
-                dateText.text = date
-                descriptionText.text = description
-                maxTempView.text = "$high"
-                minTempView.text = "$low"
+                Picasso.get().load(iconUrl).into(itemView.icon)
+                itemView.date.text = date
+                itemView.description.text = description
+                itemView.maxTemperature.text = "$high"
+                itemView.minTemperature.text = "$low"
                 itemView.setOnClickListener { itemClick(this) }
             }
         }
