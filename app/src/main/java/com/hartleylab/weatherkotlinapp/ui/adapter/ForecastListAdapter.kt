@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hartleylab.weatherkotlinapp.R
 import com.hartleylab.weatherkotlinapp.domain.model.ForecastList
 import com.hartleylab.weatherkotlinapp.domain.model.ModelForecast
+import com.hartleylab.weatherkotlinapp.ui.App
 import com.hartleylab.weatherkotlinapp.ui.utility.ctx
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
